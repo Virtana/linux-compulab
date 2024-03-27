@@ -1,0 +1,54 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright 2023 CompuLab
+ */
+
+/dts-v1/;
+
+#include "ucm-imx93.dtsi"
+#include "ucm-imx93-lvds.dtsi"
+
+/ {
+	model = "CompuLab UCM-i.MX93 with mipi csi enabled";
+	compatible = "compulab,ucm-imx93", "fsl,imx93";
+};
+
+&cameradev {
+	status = "okay";
+};
+
+&isi_0 {
+	status = "okay";
+
+	cap_device {
+		status = "okay";
+	};
+};
+
+&lpi2c3 {
+	sensor_ov9281: camera@60 {
+		compatible = "ovti,ov9281";
+		reg = <0x60>;
+		clocks = <&clk IMX93_CLK_MIPI_PHY_CFG>;
+
+		port {
+			ov9281_ep: endpoint {
+				remote-endpoint = <&mipi_csi_ep>;
+				data-lanes = <1 2>;
+				link-frequencies = /bits/ 64 <400000000>;
+			};
+		};
+	};
+};
+
+&mipi_csi {
+	status = "okay";
+
+	port@0 {
+		reg = <0>;
+		mipi_csi_ep: endpoint {
+			remote-endpoint = <&ov9281_ep>;
+			data-lanes = <1 2>;
+		};
+	};
+};
