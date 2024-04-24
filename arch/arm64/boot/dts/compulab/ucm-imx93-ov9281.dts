@@ -31,6 +31,9 @@
 		reg = <0x60>;
 		clocks = <&clk IMX93_CLK_MIPI_PHY_CFG>;
 
+		reset-gpios=<&pca9555 11 GPIO_ACTIVE_HIGH>;
+		status="okay";
+
 		port {
 			ov9281_ep: endpoint {
 				remote-endpoint = <&mipi_csi_ep>;
