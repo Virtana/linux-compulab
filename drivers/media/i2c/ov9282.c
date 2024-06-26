@@ -592,6 +592,26 @@ static int ov9282_get_pad_format(struct v4l2_subdev *sd,
 	return 0;
 }
 
+static int ov9282_s_power(struct v4l2_subdev *sd, int on)
+{
+	return 0;
+}
+
+static struct v4l2_subdev_core_ops ov9282_subdev_core_ops = {
+	.s_power	= ov9282_s_power,
+};
+
+static int ov9282_link_setup(struct media_entity *entity,
+			   const struct media_pad *local,
+			   const struct media_pad *remote, u32 flags)
+{
+	return 0;
+}
+
+static const struct media_entity_operations ov9282_sd_media_ops = {
+	.link_setup = ov9282_link_setup,
+};
+
 /**
  * ov9282_set_pad_format() - Set subdevice pad format
  * @sd: pointer to ov9282 V4L2 sub-device structure
@@ -858,6 +878,7 @@ static const struct v4l2_subdev_pad_ops ov9282_pad_ops = {
 };
 
 static const struct v4l2_subdev_ops ov9282_subdev_ops = {
+	.core = &ov9282_subdev_core_ops,
 	.video = &ov9282_video_ops,
 	.pad = &ov9282_pad_ops,
 };
@@ -1014,6 +1035,8 @@ static int ov9282_probe(struct i2c_client *client)
 
 	ov9282->dev = &client->dev;
 
+	dev_err(ov9282->dev, "ov9282 probe");
+
 	/* Initialize subdev */
 	v4l2_i2c_subdev_init(&ov9282->sd, client, &ov9282_subdev_ops);
 
@@ -1051,6 +1074,7 @@ static int ov9282_probe(struct i2c_client *client)
 	/* Initialize subdev */
 	ov9282->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
 	ov9282->sd.entity.function = MEDIA_ENT_F_CAM_SENSOR;
+	ov9282->sd.entity.ops = &ov9282_sd_media_ops;
 
 	/* Initialize source pad */
 	ov9282->pad.flags = MEDIA_PAD_FL_SOURCE;
@@ -1113,6 +1137,7 @@ static const struct dev_pm_ops ov9282_pm_ops = {
 };
 
 static const struct of_device_id ov9282_of_match[] = {
+	{ .compatible = "ovti,ov9281" },
 	{ .compatible = "ovti,ov9282" },
 	{ }
 };
