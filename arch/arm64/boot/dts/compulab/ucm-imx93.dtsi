@@ -503,7 +503,7 @@
 		status = "disabled";
 	};
 
-	sensor_mipi2: mipi2@42 {
+//	sensor_mipi2: mipi2@42 {
 //		compatible = "aptina,ar1335_mcu";
 //		reg = <0x42>;
 //		clocks = <&clk IMX93_CLK_MIPI_PHY_CFG>;
@@ -524,14 +524,14 @@
 //				clock-lanes = <0>;
 //			};
 //		};
-	};
+//	};
 };
 
-&mipi_csi {
-        #address-cells = <1>;
-        #size-cells = <0>;
-        status = "okay";
-
+//&mipi_csi {
+//        #address-cells = <1>;
+//        #size-cells = <0>;
+//        status = "okay";
+//
 //        port@0 {
 //                reg = <0>;
 //                mipi_csi_ep: endpoint {
@@ -542,7 +542,7 @@
 //                        bus-type = <4>;
 //                };
 //        };
-};
+//};
 
 &lpuart1 { /* console */
 	pinctrl-names = "default";
