@@ -340,8 +340,13 @@ static int ov9282_write_reg(struct ov9282 *ov9282, u16 reg, u32 len, u32 val)
 
 	put_unaligned_be16(reg, buf);
 	put_unaligned_be32(val << (8 * (4 - len)), buf + 2);
-	if (i2c_master_send(client, buf, len + 2) != len + 2)
+
+	u32 i2c_return = i2c_master_send(client, buf, len + 2);
+	if (i2c_return != len + 2)
+	{
+		dev_err(ov9282->dev, "i2c return = %d", i2c_return);
 		return -EIO;
+	}
 
 	return 0;
 }
@@ -361,6 +366,7 @@ static int ov9282_write_regs(struct ov9282 *ov9282,
 	int ret;
 
 	for (i = 0; i < len; i++) {
+		mdelay(1);
 		ret = ov9282_write_reg(ov9282, regs[i].address, 1, regs[i].val);
 		if (ret)
 			return ret;
