@@ -54,6 +54,15 @@ struct mxc_isi_fmt mxc_isi_src_formats[] = {
 		.memplanes	= 1,
 		.colplanes	= 1,
 		.align		= 2,
+	}, {
+		.name		= "RAW10",
+		.fourcc		= V4L2_PIX_FMT_SBGGR10,
+		.depth		= { 16 },
+		.color		= MXC_ISI_OUT_FMT_RAW16,
+		.memplanes	= 1,
+		.colplanes	= 1,
+		.align		= 2,
+		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
 	}
 };
 
@@ -102,7 +111,7 @@ struct mxc_isi_fmt *mxc_isi_get_src_fmt(struct v4l2_subdev_format *sd_fmt)
 		index = 1;
 	else
 		index = 0;
-	return &mxc_isi_src_formats[index];
+	return &mxc_isi_src_formats[2];
 }
 
 static inline struct mxc_isi_buffer *to_isi_buffer(struct vb2_v4l2_buffer *v4l2_buf)
@@ -958,7 +967,7 @@ static int mxc_isi_source_fmt_init(struct mxc_isi_cap_dev *isi_cap)
 
 	src_fmt.pad = source_pad->index;
 	src_fmt.which = V4L2_SUBDEV_FORMAT_ACTIVE;
-	src_fmt.format.code = MEDIA_BUS_FMT_UYVY8_1X16;
+	src_fmt.format.code = MEDIA_BUS_FMT_SBGGR10_1X10;
 	src_fmt.format.width = dst_f->width;
 	src_fmt.format.height = dst_f->height;
 	ret = v4l2_subdev_call(src_sd, pad, set_fmt, NULL, &src_fmt);

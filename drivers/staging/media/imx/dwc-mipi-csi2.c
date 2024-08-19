@@ -410,40 +410,40 @@ static void dwc_mipi_csi2_dump(struct dwc_mipi_csi2_host *csi2h)
 {
 	struct device *dev = &csi2h->pdev->dev;
 
-	dev_dbg(dev, "DWC CSI2 Version: %#x\n", dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_VERSION));
-	dev_dbg(dev, "DWC CSI2 lanes: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_N_LANES));
-	dev_dbg(dev, "DWC CSI2 HOST RESETN: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_HOST_RESETN));
-	dev_dbg(dev, "DWC CSI2 INT STATUS MAIN: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_INT_ST_MAIN));
-	dev_dbg(dev, "DWC CSI2 DATA IDS1: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DATA_IDS_1));
-	dev_dbg(dev, "DWC CSI2 DATA IDS2: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DATA_IDS_2));
-	dev_dbg(dev, "DWC CSI2 DPHY CFG: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_CFG));
-	dev_dbg(dev, "DWC CSI2 DPHY MODE: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_MODE));
-	dev_dbg(dev, "DWC CSI2 INT STATUS AP MAIN: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_INT_ST_AP_MAIN));
-	dev_dbg(dev, "DWC CSI2 DATA IDS VC1: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DATA_IDS_VC_1));
-	dev_dbg(dev, "DWC CSI2 DATA IDS VC2: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DATA_IDS_VC_2));
-	dev_dbg(dev, "DWC CSI2 DPHY SHUTDOWN: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_SHUTDOWNZ));
-	dev_dbg(dev, "DWC CSI2 DPHY RESET: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_RSTZ));
-	dev_dbg(dev, "DWC CSI2 DPHY RX STATUS: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_RX_STATUS));
-	dev_dbg(dev, "DWC CSI2 DPHY STOP STATUS: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_STOPSTATE));
-	dev_dbg(dev, "DWC CSI2 DPHY TEST CTRL0: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_TEST_CTRL0));
-	dev_dbg(dev, "DWC CSI2 DPHY TEST CTRL1: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_TEST_CTRL1));
-	dev_dbg(dev, "DWC CSI2 PPI PG PATTERN HIGH: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_PPI_PG_PATTERN_VRES));
-	dev_dbg(dev, "DWC CSI2 PPI PG PATTERN WIDTH: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_PPI_PG_PATTERN_HRES));
-	dev_dbg(dev, "DWC CSI2 PPI PG CONFIG: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_PPI_PG_CONFIG));
-	dev_dbg(dev, "DWC CSI2 PPI PG ENABLE: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_PPI_PG_ENABLE));
-	dev_dbg(dev, "DWC CSI2 PPI PG STATUS: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_PPI_PG_STATUS));
-	dev_dbg(dev, "DWC CSI2 IPI MODE: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_IPI_MODE));
-	dev_dbg(dev, "DWC CSI2 IPI VCID: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_IPI_VCID));
-	dev_dbg(dev, "DWC CSI2 IPI DATA TYPE: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_IPI_DATA_TYPE));
-	dev_dbg(dev, "DWC CSI2 IPI SOFT RESET: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_IPI_SOFTRSTN));
-	dev_dbg(dev, "DWC CSI2 IPI ADV FEATURE: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_IPI_ADV_FEATURES));
-	dev_dbg(dev, "DWC CSI2 INT_MSK_PHY_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0xE4));
-	dev_dbg(dev, "DWC CSI2 INT_MSK_PKT_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0xF4));
-	dev_dbg(dev, "DWC CSI2 INT_MSK_PHY: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x114));
-	dev_dbg(dev, "DWC CSI2 INT_MSK_IPI_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x144));
-	dev_dbg(dev, "DWC CSI2 INT_MSK_BNDRY_FRAME_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x284));
-	dev_dbg(dev, "DWC CSI2 INT_MSK_SEQ_FRAME_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x294));
-	dev_dbg(dev, "DWC CSI2 INT_MSK_DATA_ID: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x2c4));
+	dev_info(dev, "DWC CSI2 Version: %#x\n", dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_VERSION));
+	dev_info(dev, "DWC CSI2 lanes: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_N_LANES));
+	dev_info(dev, "DWC CSI2 HOST RESETN: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_HOST_RESETN));
+	dev_info(dev, "DWC CSI2 INT STATUS MAIN: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_INT_ST_MAIN));
+	dev_info(dev, "DWC CSI2 DATA IDS1: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DATA_IDS_1));
+	dev_info(dev, "DWC CSI2 DATA IDS2: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DATA_IDS_2));
+	dev_info(dev, "DWC CSI2 DPHY CFG: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_CFG));
+	dev_info(dev, "DWC CSI2 DPHY MODE: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_MODE));
+	dev_info(dev, "DWC CSI2 INT STATUS AP MAIN: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_INT_ST_AP_MAIN));
+	dev_info(dev, "DWC CSI2 DATA IDS VC1: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DATA_IDS_VC_1));
+	dev_info(dev, "DWC CSI2 DATA IDS VC2: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DATA_IDS_VC_2));
+	dev_info(dev, "DWC CSI2 DPHY SHUTDOWN: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_SHUTDOWNZ));
+	dev_info(dev, "DWC CSI2 DPHY RESET: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_RSTZ));
+	dev_info(dev, "DWC CSI2 DPHY RX STATUS: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_RX_STATUS));
+	dev_info(dev, "DWC CSI2 DPHY STOP STATUS: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_STOPSTATE));
+	dev_info(dev, "DWC CSI2 DPHY TEST CTRL0: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_TEST_CTRL0));
+	dev_info(dev, "DWC CSI2 DPHY TEST CTRL1: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_DPHY_TEST_CTRL1));
+	dev_info(dev, "DWC CSI2 PPI PG PATTERN HIGH: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_PPI_PG_PATTERN_VRES));
+	dev_info(dev, "DWC CSI2 PPI PG PATTERN WIDTH: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_PPI_PG_PATTERN_HRES));
+	dev_info(dev, "DWC CSI2 PPI PG CONFIG: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_PPI_PG_CONFIG));
+	dev_info(dev, "DWC CSI2 PPI PG ENABLE: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_PPI_PG_ENABLE));
+	dev_info(dev, "DWC CSI2 PPI PG STATUS: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_PPI_PG_STATUS));
+	dev_info(dev, "DWC CSI2 IPI MODE: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_IPI_MODE));
+	dev_info(dev, "DWC CSI2 IPI VCID: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_IPI_VCID));
+	dev_info(dev, "DWC CSI2 IPI DATA TYPE: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_IPI_DATA_TYPE));
+	dev_info(dev, "DWC CSI2 IPI SOFT RESET: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_IPI_SOFTRSTN));
+	dev_info(dev, "DWC CSI2 IPI ADV FEATURE: %#x\n",   dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_IPI_ADV_FEATURES));
+	dev_info(dev, "DWC CSI2 INT_MSK_PHY_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0xE4));
+	dev_info(dev, "DWC CSI2 INT_MSK_PKT_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0xF4));
+	dev_info(dev, "DWC CSI2 INT_MSK_PHY: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x114));
+	dev_info(dev, "DWC CSI2 INT_MSK_IPI_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x144));
+	dev_info(dev, "DWC CSI2 INT_MSK_BNDRY_FRAME_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x284));
+	dev_info(dev, "DWC CSI2 INT_MSK_SEQ_FRAME_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x294));
+	dev_info(dev, "DWC CSI2 INT_MSK_DATA_ID: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x2c4));
 }
 
 static void gasket_dump(struct dwc_mipi_csi2_host *csi2h)
@@ -453,19 +453,19 @@ static void gasket_dump(struct dwc_mipi_csi2_host *csi2h)
 	u32 val;
 
 	regmap_read(gasket, DISP_MIX_CAMERA_MUX, &val);
-	dev_dbg(dev, "gasket: CAMERA MUX: %#x\n", val);
+	dev_info(dev, "gasket: CAMERA MUX: %#x\n", val);
 
 	regmap_read(gasket, DISP_MIX_CSI_REG, &val);
-	dev_dbg(dev, "gasket: CSI REG: %#x\n", val);
+	dev_info(dev, "gasket: CSI REG: %#x\n", val);
 
 	regmap_read(gasket, 0x3C, &val);
-	dev_dbg(dev, "gasket: MIPI -> ISI pixel ctrl: %#x\n", val);
+	dev_info(dev, "gasket: MIPI -> ISI pixel ctrl: %#x\n", val);
 
 	regmap_read(gasket, 0x40, &val);
-	dev_dbg(dev, "gasket: MIPI -> ISI pixel cnt: %#x\n", val);
+	dev_info(dev, "gasket: MIPI -> ISI pixel cnt: %#x\n", val);
 
 	regmap_read(gasket, 0x44, &val);
-	dev_dbg(dev, "gasket: MIPI -> ISI line cnt: %#x\n", val);
+	dev_info(dev, "gasket: MIPI -> ISI line cnt: %#x\n", val);
 }
 
 static inline struct dwc_mipi_csi2_host *sd_to_dwc_mipi_csi2h(
@@ -532,7 +532,7 @@ static bool is_ppi_pg_active(struct dwc_mipi_csi2_host *csi2h)
 
 static void dwc_pattern_generate(struct dwc_mipi_csi2_host *csi2h)
 {
-	struct dwc_pg_config *pg_config = &csi2h->pg_config; 
+	struct dwc_pg_config *pg_config = &csi2h->pg_config;
 	struct v4l2_mbus_framefmt *mf = &csi2h->format;
 	struct device *dev = &csi2h->pdev->dev;
 	u32 val;
@@ -559,7 +559,7 @@ static void dwc_pattern_generate(struct dwc_mipi_csi2_host *csi2h)
 	val = (csi2h->ppi_pg_enable) ? DWC_MIPI_CSI2_PPI_PG_ENABLE_EN : 0;
 	dwc_mipi_csi2h_write(csi2h, DWC_MIPI_CSI2_PPI_PG_ENABLE, val);
 
-	dev_dbg(dev, "enable DWC MIPI CSI2 pattern generator\n");
+	dev_info(dev, "enable DWC MIPI CSI2 pattern generator\n");
 }
 
 static void dwc_mipi_csi2_dphy_reset(struct dwc_mipi_csi2_host *csi2h)
@@ -618,7 +618,7 @@ static void dwc_mipi_csi2_ipi_config_htiming(struct dwc_mipi_csi2_host *csi2h)
 	val = DWC_MIPI_CSI2_IPI_HLINE_TIME_VAL(ipi_cfg->hline_time);
 	dwc_mipi_csi2h_write(csi2h, DWC_MIPI_CSI2_IPI_HLINE_TIME, val);
 
-	dev_dbg(dev, "hsa_time=%d, hbp_time=%d, hsd_time=%d, hline_time=%d\n",
+	dev_info(dev, "hsa_time=%d, hbp_time=%d, hsd_time=%d, hline_time=%d\n",
 		ipi_cfg->hsa_time, ipi_cfg->hbp_time,
 		ipi_cfg->hsd_time, ipi_cfg->hline_time);
 }
@@ -641,7 +641,7 @@ static void dwc_mipi_csi2_ipi_config_vtiming(struct dwc_mipi_csi2_host *csi2h)
 	val = DWC_MIPI_CSI2_IPI_VACTIVE_LINES_VAL(ipi_cfg->vactive_lines);
 	dwc_mipi_csi2h_write(csi2h, DWC_MIPI_CSI2_IPI_VACTIVE_LINES, val);
 
-	dev_dbg(dev, "vsa_lines=%d, vbp_lines=%d, vsd_lines=%d, active_lines=%d\n",
+	dev_info(dev, "vsa_lines=%d, vbp_lines=%d, vsd_lines=%d, active_lines=%d\n",
 		ipi_cfg->vsa_lines, ipi_cfg->vbp_lines,
 		ipi_cfg->vfp_lines, ipi_cfg->vactive_lines);
 }
@@ -716,6 +716,9 @@ static void disp_mix_gasket_config(struct dwc_mipi_csi2_host *csi2h)
 	case MEDIA_BUS_FMT_SRGGB12_1X12:
 		fmt_val = DT_RAW12;
 		break;
+	case MEDIA_BUS_FMT_Y10_1X10:
+		fmt_val = DT_RAW10;
+		break;
 	default:
 		pr_err("gasket not support format %d\n", mf->code);
 		return;
@@ -733,7 +736,7 @@ static void disp_mix_gasket_config(struct dwc_mipi_csi2_host *csi2h)
 	val |= csi2h->yuv420_line_sel << 13;
 	regmap_write(gasket, DISP_MIX_CAMERA_MUX, val);
 
-	dev_dbg(dev, "format: %#x, w/h=(%d, %d)\n", mf->code, mf->width, mf->height);
+	dev_info(dev, "format: %#x, w/h=(%d, %d)\n", mf->code, mf->width, mf->height);
 	if (WARN_ON(!mf->width || !mf->height)) {
 		pr_err("Invaid width/height\n");
 		return;
@@ -851,7 +854,7 @@ static int dwc_mipi_csi2_host_ipi_config(struct dwc_mipi_csi2_host *csi2h)
 		val &= ~DWC_MIPI_CSI2_IPI_VCID_VC_2;
 	dwc_mipi_csi2h_write(csi2h, DWC_MIPI_CSI2_IPI_VCID, val);
 
-	dev_dbg(dev, "data_type:0x%x, virtual chan: %d\n",
+	dev_info(dev, "data_type:0x%x, virtual chan: %d\n",
 		ipi_cfg->data_type, ipi_cfg->vir_chan);
 
 	/* 1. Select the IPI mode, camera timing by default
@@ -880,7 +883,7 @@ static int dwc_mipi_csi2_host_ipi_config(struct dwc_mipi_csi2_host *csi2h)
 	if (ipi_cfg->controller_mode || csi2h->ppi_pg_enable)
 		dwc_mipi_csi2_ipi_config_vtiming(csi2h);
 
-	dev_dbg(dev, "ipi mode: %s, color_mode: %s\n",
+	dev_info(dev, "ipi mode: %s, color_mode: %s\n",
 		ipi_cfg->controller_mode ? "controller" : "camera",
 		ipi_cfg->color_mode_16   ? "color mode 16" : "color mode 48");
 
@@ -1045,7 +1048,7 @@ static int dwc_mipi_csi2_param_init(struct dwc_mipi_csi2_host *csi2h)
 	of_property_read_u32(node, "cfg-clk-range", &csi2h->cfgclkfreqrange);
 	of_property_read_u32(node, "hs-clk-range", &csi2h->hsclkfreqrange);
 
-	dev_dbg(dev, "cfgclkfreqrange=%d, hsfreqrange=%d\n",
+	dev_info(dev, "cfgclkfreqrange=%d, hsfreqrange=%d\n",
 		 csi2h->cfgclkfreqrange, csi2h->hsclkfreqrange);
 	return 0;
 }
@@ -1204,16 +1207,26 @@ static int dwc_mipi_csi2_s_stream(struct v4l2_subdev *sd, int enable)
 
 	if (enable) {
 		pm_runtime_get_sync(dev);
+		dev_info(&csi2h->pdev->dev, "test1");
 		dwc_mipi_csi2_host_startup(csi2h);
+		dev_info(&csi2h->pdev->dev, "test2");
 		dwc_mipi_csi2_host_init(csi2h);
+		dev_info(&csi2h->pdev->dev, "test3");
 		dwc_mipi_csi2_host_ipi_config(csi2h);
+		dev_info(&csi2h->pdev->dev, "test4");
 		dwc_mipi_csi2_host_hs_rx_start(csi2h);
+		dev_info(&csi2h->pdev->dev, "test5");
 		disp_mix_gasket_config(csi2h);
+		dev_info(&csi2h->pdev->dev, "test6");
 		dwc_mipi_csi2_dump(csi2h);
+		dev_info(&csi2h->pdev->dev, "test7");
 		gasket_dump(csi2h);
+		dev_info(&csi2h->pdev->dev, "test8");
 	} else {
 		dwc_mipi_csi2_host_hs_rx_stop(csi2h);
+		dev_info(&csi2h->pdev->dev, "test9");
 		pm_runtime_put(dev);
+		dev_info(&csi2h->pdev->dev, "test10");
 	}
 
 	return ret;

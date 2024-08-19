@@ -97,6 +97,15 @@ struct mxc_isi_fmt mxc_isi_out_formats[] = {
 		.colplanes	= 1,
 		.align		= 2,
 		.mbus_code	= MEDIA_BUS_FMT_RGB888_1X24,
+	}, {
+		.name		= "RAW10",
+		.fourcc		= V4L2_PIX_FMT_SBGGR10,
+		.depth		= { 16 },
+		.color		= MXC_ISI_OUT_FMT_RAW16,
+		.memplanes	= 1,
+		.colplanes	= 1,
+		.align		= 2,
+		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
 	}
 };
 

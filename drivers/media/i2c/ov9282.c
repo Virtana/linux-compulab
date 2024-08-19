@@ -260,7 +260,7 @@ static const struct ov9282_mode supported_mode = {
 	.vblank_max = 51540,
 	.pclk = 160000000,
 	.link_freq_idx = 0,
-	.code = MEDIA_BUS_FMT_Y10_1X10,
+	.code = MEDIA_BUS_FMT_SBGGR10_1X10,
 	.reg_list = {
 		.num_of_regs = ARRAY_SIZE(mode_1280x720_regs),
 		.regs = mode_1280x720_regs,
@@ -365,8 +365,8 @@ static int ov9282_write_regs(struct ov9282 *ov9282,
 	unsigned int i;
 	int ret;
 
+	mdelay(1);
 	for (i = 0; i < len; i++) {
-		mdelay(1);
 		ret = ov9282_write_reg(ov9282, regs[i].address, 1, regs[i].val);
 		if (ret)
 			return ret;
