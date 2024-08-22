@@ -444,6 +444,8 @@ static void dwc_mipi_csi2_dump(struct dwc_mipi_csi2_host *csi2h)
 	dev_info(dev, "DWC CSI2 INT_MSK_BNDRY_FRAME_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x284));
 	dev_info(dev, "DWC CSI2 INT_MSK_SEQ_FRAME_FATAL: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x294));
 	dev_info(dev, "DWC CSI2 INT_MSK_DATA_ID: %#x\n", dwc_mipi_csi2h_read(csi2h, 0x2c4));
+
+	dev_info(dev, "IPI FATAL 140: %#x\n", dwc_mipi_csi2h_read(csi2h, DWC_MIPI_CSI2_INT_ST_IPI_FATAL));
 }
 
 static void gasket_dump(struct dwc_mipi_csi2_host *csi2h)
@@ -1004,7 +1006,7 @@ static int dwc_mipi_csi2_param_init(struct dwc_mipi_csi2_host *csi2h)
 		memset(ipi_cfg, 0x0, sizeof(*ipi_cfg));
 
 		if (csi2h->ppi_pg_enable) {
-			ipi_cfg->data_type  = DT_RGB888;
+			ipi_cfg->data_type  = DT_RAW10;
 			ipi_cfg->vir_chan   = 0;
 			ipi_cfg->hsa_time   = 3;
 			ipi_cfg->hbp_time   = 2;
@@ -1018,7 +1020,7 @@ static int dwc_mipi_csi2_param_init(struct dwc_mipi_csi2_host *csi2h)
 			ipi_cfg->color_mode_16   = 0;
 			ipi_cfg->embeded_data    = 0;
 		} else {
-			ipi_cfg->data_type  = DT_YUV422_8;
+			ipi_cfg->data_type  = DT_RAW10;
 			ipi_cfg->vir_chan   = 0;
 			ipi_cfg->hsa_time   = 0;
 			ipi_cfg->hbp_time   = 0;

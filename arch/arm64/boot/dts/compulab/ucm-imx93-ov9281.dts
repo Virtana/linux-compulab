@@ -40,6 +40,7 @@
 				data-lanes = <1 2>;
 				clock-lanes = <0>;
 				link-frequencies = /bits/ 64 <400000000>;
+				clock-noncontinuous;
 			};
 		};
 	};
@@ -56,8 +57,9 @@
 			remote-endpoint = <&ov9281_ep>;
 			data-lanes = <2>;
 			cfg-clk-range = <28>;
-			hs-clk-range = <0x2b>;
+			hs-clk-range = <0x05>;
 			bus-type = <4>;
+			clock-noncontinuous;
 		};
 	};
 };
