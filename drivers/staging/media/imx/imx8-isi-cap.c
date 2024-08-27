@@ -57,14 +57,14 @@ struct mxc_isi_fmt mxc_isi_src_formats[] = {
 		.colplanes	= 1,
 		.align		= 2,
 	}, {
-		.name		= "BA10",
-		.fourcc		= V4L2_PIX_FMT_SGRBG10,
+		.name		= "RAW_Y10",
+		.fourcc		= V4L2_PIX_FMT_Y10,
 		.depth		= { 16 },
 		.color		= MXC_ISI_OUT_FMT_RAW16,
 		.memplanes	= 1,
 		.colplanes	= 1,
 		.align		= 2,
-		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
+		.mbus_code	= MEDIA_BUS_FMT_Y10_1X10,
 	}
 };
 
@@ -96,7 +96,7 @@ struct mxc_isi_fmt *mxc_isi_find_format(const u32 *pixelformat,
 			def_fmt = fmt;
 		id++;
 	}
-	return &mxc_isi_out_formats[10];
+	return &mxc_isi_out_formats[0];
 }
 
 struct mxc_isi_fmt *mxc_isi_get_src_fmt(struct v4l2_subdev_format *sd_fmt)
