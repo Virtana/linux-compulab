@@ -9,6 +9,8 @@
  *
  */
 
+#define DEBUG
+
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/types.h>
@@ -55,14 +57,14 @@ struct mxc_isi_fmt mxc_isi_src_formats[] = {
 		.colplanes	= 1,
 		.align		= 2,
 	}, {
-		.name		= "RAW10",
-		.fourcc		= V4L2_PIX_FMT_SBGGR10,
+		.name		= "BA10",
+		.fourcc		= V4L2_PIX_FMT_SGRBG10,
 		.depth		= { 16 },
 		.color		= MXC_ISI_OUT_FMT_RAW16,
 		.memplanes	= 1,
 		.colplanes	= 1,
 		.align		= 2,
-		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
+		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
 	}
 };
 
@@ -94,7 +96,7 @@ struct mxc_isi_fmt *mxc_isi_find_format(const u32 *pixelformat,
 			def_fmt = fmt;
 		id++;
 	}
-	return def_fmt;
+	return &mxc_isi_out_formats[10];
 }
 
 struct mxc_isi_fmt *mxc_isi_get_src_fmt(struct v4l2_subdev_format *sd_fmt)
@@ -897,7 +899,7 @@ mxc_isi_cap_fmt_try(struct mxc_isi_cap_dev *isi_cap,
 	pix->num_planes = fmt->memplanes;
 	pix->pixelformat = fmt->fourcc;
 	pix->field = V4L2_FIELD_NONE;
-	pix->colorspace = V4L2_COLORSPACE_SRGB;
+	pix->colorspace = V4L2_COLORSPACE_RAW;
 	pix->ycbcr_enc = V4L2_MAP_YCBCR_ENC_DEFAULT(pix->colorspace);
 	pix->quantization = V4L2_QUANTIZATION_FULL_RANGE;
 	memset(pix->reserved, 0x00, sizeof(pix->reserved));
@@ -967,7 +969,7 @@ static int mxc_isi_source_fmt_init(struct mxc_isi_cap_dev *isi_cap)
 
 	src_fmt.pad = source_pad->index;
 	src_fmt.which = V4L2_SUBDEV_FORMAT_ACTIVE;
-	src_fmt.format.code = MEDIA_BUS_FMT_SBGGR10_1X10;
+	src_fmt.format.code = V4L2_PIX_FMT_SGRBG10;
 	src_fmt.format.width = dst_f->width;
 	src_fmt.format.height = dst_f->height;
 	ret = v4l2_subdev_call(src_sd, pad, set_fmt, NULL, &src_fmt);

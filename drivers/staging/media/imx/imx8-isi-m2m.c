@@ -40,41 +40,51 @@
 
 struct mxc_isi_fmt mxc_isi_input_formats[] = {
 	/* Pixel link input format */
+	// {
+	// 	.name		= "XBGR32",
+	// 	.fourcc		= V4L2_PIX_FMT_XBGR32,
+	// 	.depth		= { 32 },
+	// 	.color =	MXC_ISI_M2M_IN_FMT_XRGB8,
+	// 	.memplanes	= 1,
+	// 	.colplanes	= 1,
+	// }, {
+	// 	.name		= "RGB565",
+	// 	.fourcc		= V4L2_PIX_FMT_RGB565,
+	// 	.depth		= { 16 },
+	// 	.color =	MXC_ISI_M2M_IN_FMT_RGB565,
+	// 	.memplanes	= 1,
+	// 	.colplanes	= 1,
+	// }, {
+	// 	.name		= "YUV32 (X-Y-U-V)",
+	// 	.fourcc		= V4L2_PIX_FMT_YUV32,
+	// 	.depth		= { 32 },
+	// 	.color = MXC_ISI_M2M_IN_FMT_YUV444_1P8P,
+	// 	.memplanes	= 1,
+	// 	.colplanes	= 1,
+	// }, {
+	// 	.name		= "YUV16 (X-Y-U-V)",
+	// 	.fourcc		= V4L2_PIX_FMT_YUYV,
+	// 	.depth		= { 16 },
+	// 	.color = MXC_ISI_M2M_IN_FMT_YUV422_1P8P,
+	// 	.memplanes	= 1,
+	// 	.colplanes	= 1,
+	// }, {
+	// 	.name		= "RGBA (R-G-B-A)",
+	// 	.fourcc		= V4L2_PIX_FMT_RGBA32,
+	// 	.depth		= { 32 },
+	// 	.color = MXC_ISI_M2M_IN_FMT_XBGR8,
+	// 	.memplanes	= 1,
+	// 	.colplanes	= 1,
+	// },
 	{
-		.name		= "XBGR32",
-		.fourcc		= V4L2_PIX_FMT_XBGR32,
-		.depth		= { 32 },
-		.color =	MXC_ISI_M2M_IN_FMT_XRGB8,
-		.memplanes	= 1,
-		.colplanes	= 1,
-	}, {
-		.name		= "RGB565",
-		.fourcc		= V4L2_PIX_FMT_RGB565,
+		.name		= "BA10",
+		.fourcc		= V4L2_PIX_FMT_SGRBG10,
 		.depth		= { 16 },
-		.color =	MXC_ISI_M2M_IN_FMT_RGB565,
+		.color		= MXC_ISI_OUT_FMT_RAW16,
 		.memplanes	= 1,
 		.colplanes	= 1,
-	}, {
-		.name		= "YUV32 (X-Y-U-V)",
-		.fourcc		= V4L2_PIX_FMT_YUV32,
-		.depth		= { 32 },
-		.color = MXC_ISI_M2M_IN_FMT_YUV444_1P8P,
-		.memplanes	= 1,
-		.colplanes	= 1,
-	}, {
-		.name		= "YUV16 (X-Y-U-V)",
-		.fourcc		= V4L2_PIX_FMT_YUYV,
-		.depth		= { 16 },
-		.color = MXC_ISI_M2M_IN_FMT_YUV422_1P8P,
-		.memplanes	= 1,
-		.colplanes	= 1,
-	}, {
-		.name		= "RGBA (R-G-B-A)",
-		.fourcc		= V4L2_PIX_FMT_RGBA32,
-		.depth		= { 32 },
-		.color = MXC_ISI_M2M_IN_FMT_XBGR8,
-		.memplanes	= 1,
-		.colplanes	= 1,
+		.align		= 2,
+		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
 	}
 };
 
