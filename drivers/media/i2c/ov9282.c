@@ -844,6 +844,26 @@ done_endpoint_free:
 	return ret;
 }
 
+static int ov9282_s_power(struct v4l2_subdev *sd, int on)
+{
+	return 0;
+}
+
+static struct v4l2_subdev_core_ops ov9282_subdev_core_ops = {
+	.s_power	= ov9282_s_power,
+};
+
+static int ov9282_link_setup(struct media_entity *entity,
+			   const struct media_pad *local,
+			   const struct media_pad *remote, u32 flags)
+{
+	return 0;
+}
+
+static const struct media_entity_operations ov9282_sd_media_ops = {
+	.link_setup = ov9282_link_setup,
+};
+
 /* V4l2 subdevice ops */
 static const struct v4l2_subdev_video_ops ov9282_video_ops = {
 	.s_stream = ov9282_set_stream,
@@ -858,6 +878,7 @@ static const struct v4l2_subdev_pad_ops ov9282_pad_ops = {
 };
 
 static const struct v4l2_subdev_ops ov9282_subdev_ops = {
+	.core = &ov9282_subdev_core_ops,
 	.video = &ov9282_video_ops,
 	.pad = &ov9282_pad_ops,
 };
@@ -1051,6 +1072,7 @@ static int ov9282_probe(struct i2c_client *client)
 	/* Initialize subdev */
 	ov9282->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
 	ov9282->sd.entity.function = MEDIA_ENT_F_CAM_SENSOR;
+	ov9282->sd.entity.ops = &ov9282_sd_media_ops;
 
 	/* Initialize source pad */
 	ov9282->pad.flags = MEDIA_PAD_FL_SOURCE;
