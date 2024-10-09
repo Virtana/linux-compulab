@@ -708,6 +708,7 @@ static void disp_mix_gasket_config(struct dwc_mipi_csi2_host *csi2h)
 	case MEDIA_BUS_FMT_SGBRG10_1X10:
 	case MEDIA_BUS_FMT_SGRBG10_1X10:
 	case MEDIA_BUS_FMT_SRGGB10_1X10:
+	case MEDIA_BUS_FMT_Y10_1X10:
 		fmt_val = DT_RAW10;
 		break;
 	case MEDIA_BUS_FMT_SBGGR12_1X12:
@@ -1015,7 +1016,7 @@ static int dwc_mipi_csi2_param_init(struct dwc_mipi_csi2_host *csi2h)
 			ipi_cfg->color_mode_16   = 0;
 			ipi_cfg->embeded_data    = 0;
 		} else {
-			ipi_cfg->data_type  = DT_YUV422_8;
+			ipi_cfg->data_type  = DT_RAW10;
 			ipi_cfg->vir_chan   = 0;
 			ipi_cfg->hsa_time   = 0;
 			ipi_cfg->hbp_time   = 0;
@@ -1026,7 +1027,7 @@ static int dwc_mipi_csi2_param_init(struct dwc_mipi_csi2_host *csi2h)
 			ipi_cfg->vfp_lines  = 0;
 			ipi_cfg->vactive_lines   = 0x320;
 			ipi_cfg->controller_mode = 0;
-			ipi_cfg->color_mode_16   = 0;
+			ipi_cfg->color_mode_16   = 1;
 			ipi_cfg->embeded_data    = 0;
 		}
 	}
