@@ -661,6 +661,9 @@ static int ov9282_start_streaming(struct ov9282 *ov9282)
 
 	/* Write sensor mode registers */
 	reg_list = &ov9282->cur_mode->reg_list;
+
+	/* Delay to allow the sensor enough time to power up. */
+	mdelay(1);
 	ret = ov9282_write_regs(ov9282, reg_list->regs, reg_list->num_of_regs);
 	if (ret) {
 		dev_err(ov9282->dev, "fail to write initial registers");
