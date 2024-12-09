@@ -29,6 +29,10 @@ dtb-$(CONFIG_ARCH_MXC) += iot-gate-imx8plus-m2adc.dtb
 dtb-$(CONFIG_ARCH_MXC) += iot-gate-imx8plus-m2emmc.dtb
 dtb-$(CONFIG_ARCH_MXC) += iot-gate-imx8plus-m2tpm.dtb
 dtb-$(CONFIG_ARCH_MXC) += iot-gate-imx8plus-brkout_pwm_gpio.dtb
+dtb-$(CONFIG_ARCH_MXC) += iot-gate-imx8plus-rpmsg.dtb
+dtb-$(CONFIG_ARCH_MXC) += iotdin-imx8p.dtb
+dtb-$(CONFIG_ARCH_MXC) += iotdin-imx8p-rpmsg.dtb
+dtb-$(CONFIG_ARCH_MXC) += iot-gate-imx8plus-gpio-keys.dtbo
 
 dtb-$(CONFIG_ARCH_MXC) += som-imx8m-plus.dtb
 dtb-$(CONFIG_ARCH_MXC) += som-imx8m-plus_mipi-csi1.dtb
@@ -53,6 +57,7 @@ dtb-$(CONFIG_ARCH_MXC) += som-imx8m-plus-mipi-overlay.dtbo
 dtb-$(CONFIG_ARCH_MXC) += som-imx8m-plus-lvds-overlay.dtbo
 dtb-$(CONFIG_ARCH_MXC) += som-imx8m-plus-hdmi-overlay.dtbo
 # i.MX9
+dtb-$(CONFIG_SOC_IMX9) += ucm-imx93-gpio.dtb
 dtb-$(CONFIG_SOC_IMX9) += ucm-imx93.dtb
 dtb-$(CONFIG_SOC_IMX9) += ucm-imx93-headless.dtb
 dtb-$(CONFIG_SOC_IMX9) += ucm-imx93-mipi.dtb
@@ -61,6 +66,8 @@ dtb-$(CONFIG_SOC_IMX9) += ucm-imx93-eb-eth.dtb
 dtb-$(CONFIG_SOC_IMX9) += ucm-imx93-eb-audimx9.dtb
 dtb-$(CONFIG_SOC_IMX9) += ucm-imx93-thermal.dtb
 dtb-$(CONFIG_SOC_IMX9) += ucm-imx93-ov9281.dtb
+dtb-$(CONFIG_SOC_IMX9) += ucm-imx93-lpspi.dtb
+dtb-$(CONFIG_SOC_IMX9) += ucm-imx93-lpspi-slave.dtb
 # i.MX9 overlays
 DTC_FLAGS := -@
 dtb-$(CONFIG_SOC_IMX9) += ucm-imx93-lvds-overlay.dtbo
