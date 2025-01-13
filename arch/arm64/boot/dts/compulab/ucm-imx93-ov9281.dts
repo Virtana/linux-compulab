@@ -16,6 +16,7 @@
 	status = "okay";
 
 	cap_device {
+		kernelstrobe-gpios = <&gpio2 16 GPIO_ACTIVE_HIGH>;
 		status = "okay";
 	};
 };

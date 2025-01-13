@@ -27,6 +27,7 @@
 #include <media/v4l2-event.h>
 #include <media/videobuf2-core.h>
 #include <media/videobuf2-dma-contig.h>
+#include <linux/gpio/consumer.h>
 
 #include "imx8-isi-hw.h"
 #include "imx8-common.h"
@@ -197,6 +198,9 @@ void mxc_isi_cap_frame_write_done(struct mxc_isi_dev *mxc_isi)
 	}
 
 	isi_cap->frame_count++;
+
+	gpiod_set_value(isi_cap->kernel_strobe, isi_cap->kernel_strobe_cur ^ 1);
+	isi_cap->kernel_strobe_cur = isi_cap->kernel_strobe_cur ^ 1;
 
 	if (list_empty(&isi_cap->out_pending)) {
 		if (list_empty(&isi_cap->out_discard)) {
@@ -1768,6 +1772,13 @@ static int isi_cap_probe(struct platform_device *pdev)
 		dev_info(dev, "deferring %s device registration\n", dev_name(dev));
 		return -EPROBE_DEFER;
 	}
+
+	isi_cap->kernel_strobe = devm_gpiod_get(dev, "kernelstrobe", GPIOD_OUT_LOW);
+	if (IS_ERR(isi_cap->kernel_strobe))
+	{
+		dev_err(dev, "failed to get strobe gpio %ld", PTR_ERR(isi_cap->kernel_strobe));
+	}
+	isi_cap->kernel_strobe_cur = 0;
 
 	isi_cap->pdev = pdev;
 	isi_cap->id = mxc_isi->id;

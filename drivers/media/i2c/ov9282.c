@@ -248,6 +248,7 @@ static const struct ov9282_reg mode_1280x720_regs[] = {
 	{0x0101, 0x01},
 	{0x1000, 0x03},
 	{0x5a08, 0x84},
+	{0x3006, 0x08}
 };
 
 /* Supported sensor mode configurations */

@@ -329,6 +329,9 @@ struct mxc_isi_cap_dev {
 	size_t     discard_size[MXC_MAX_PLANES];
 	void       *discard_buffer[MXC_MAX_PLANES];
 	dma_addr_t discard_buffer_dma[MXC_MAX_PLANES];
+
+	struct gpio_desc *kernel_strobe;
+	int kernel_strobe_cur;
 };
 
 struct mxc_isi_dev {
